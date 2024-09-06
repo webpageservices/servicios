@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Data</title>
+</head>
+<body>
+    <h1>Register Data</h1>
+    <form id="registerForm">
+        <input type="text" id="data" placeholder="Enter your data" required>
+        <button type="submit">Save Data</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = document.getElementById('data').value;
+            const encryptedData = CryptoJS.AES.encrypt(data, 'secret-key').toString();
+            localStorage.setItem('encryptedData', encryptedData);
+            alert('Data has been saved!');
+        });
+    </script>
+</body>
+</html>
+            
