@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Dinámica con JSON</title>
+</head>
+<body>
+
+<h2>Tabla de Usuarios</h2>
+
+<table id="dataTable" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Los datos se insertarán aquí -->
+    </tbody>
+</table>
+
+<script>
+// Datos de ejemplo en formato JSON
+const data = [
+    { "id": 1, "name": "John Doe", "email": "john@example.com" },
+    { "id": 2, "name": "Jane Doe", "email": "jane@example.com" },
+    { "id": 3, "name": "Mike Smith", "email": "mike@example.com" }
+];
+
+// Función para crear la tabla HTML desde los datos JSON
+function createTable(data) {
+    const tableBody = document.querySelector('#dataTable tbody');
+    
+    // Limpiar el contenido anterior
+    tableBody.innerHTML = '';
+
+    // Insertar cada objeto del JSON en una fila de la tabla
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.email}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Llamar a la función para generar la tabla al cargar la página
+createTable(data);
+</script>
+
+</body>
+</html>
